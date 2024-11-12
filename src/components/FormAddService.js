@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 const employees = ["Tran", "Kathy", "Sandy", "Ivy", "Cindy", "Kim", "Rose"];
 
-export const FormAddService = ({ onAddService }) => {
+export const FormAddService = ({ onAddService}) => {
   const [employee, setEmployee] = useState("");
   const [serviceCost, setServiceCost] = useState("");
   const [serviceType, setServiceType] = useState("");
@@ -14,9 +14,10 @@ export const FormAddService = ({ onAddService }) => {
       employee,
       serviceCost,
       serviceType,
-      tip: 0,
+      tipAmount: 0,
     };
     onAddService(newService);
+
     setEmployee("");
     setServiceCost("");
     setServiceType("");
@@ -29,7 +30,7 @@ export const FormAddService = ({ onAddService }) => {
         <select
           value={employee}
           onChange={(e) => setEmployee(e.target.value)}
-          className="bg-very-light-grayish-cyan py-[6px] px-[17px]"
+          className="bg-very-light-grayish-cyan py-[3px] px-[4px] md:py-[6px] md:px-[17px]"
         >
           <option>Select employee</option>
           {employees.map((item) => (
@@ -42,7 +43,7 @@ export const FormAddService = ({ onAddService }) => {
         <select
           value={serviceType}
           onChange={(e) => setServiceType(e.target.value)}
-          className="bg-very-light-grayish-cyan py-[6px] px-[17px]"
+          className="bg-very-light-grayish-cyan py-[3px] px-[4px] md:py-[6px] md:px-[17px]"
         >
           <option>Select Service</option>
           <option value="pedicure">Pedicure</option>
@@ -50,7 +51,7 @@ export const FormAddService = ({ onAddService }) => {
         </select>
 
         <input
-          className="bg-very-light-grayish-cyan py-[6px] px-[17px] flex justify-between"
+          className="bg-very-light-grayish-cyan py-[3px] px-[4px] md:py-[6px] md:px-[17px] flex justify-between"
           type="number"
           placeholder="Enter Amount"
           value={serviceCost}

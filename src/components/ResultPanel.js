@@ -1,21 +1,29 @@
-import React from "react";
-const initialData = [
-  { id: 1, employeeName: "Kathy", amount: 32, serviceType: "manicure", tip: 0 },
-  { id: 2, employeeName: "Tran", amount: 22, serviceType: "pedicure", tip: 0 },
-];
-export const ResultPanel = ({ serviceList }) => {
-  console.log(serviceList);
+import React, {useState} from "react";
+export const ResultPanel = ({ serviceList, onSplit }) => {
+  const [showResult, setShowResult] = useState(false);
+  function handleOnClick(){
+    setShowResult(true)
+    onSplit()
+ 
+  }
   return (
-    <div className="bg-very-dark-cyan w-[413px] h-[417px] p-7 rounded-lg">
+    <div className="bg-very-dark-cyan h-[200px] md:w-[413px] md:h-[417px] p-7 rounded-lg">
       <h1 className="text-xl text-white">Tip amount</h1>
-      <ul>
+      {showResult && <ul>
         {serviceList.map((item) => (
           <li key={item.id} className="flex justify-between">
             <span className="text-light-grayish-cyan">{item.employee}</span>
-            <span className="text-primary text-3xl">${item.tip}</span>
+            <span className="text-primary text-3xl">${item.tipAmount}</span>
           </li>
         ))}
-      </ul>
+      </ul>}
+      
+      <button
+          className="bg-primary p-[9px] grid-cols-subgrid col-span-2"
+          onClick={handleOnClick}
+        >
+          Split Tip
+        </button>
     </div>
   );
 };

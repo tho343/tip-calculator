@@ -2,10 +2,11 @@ import React from "react";
 import { useState } from "react";
 
 export const FormAddTip = ({ onAddTip }) => {
-  const [tip, setTip] = useState(0);
+  const [tip, setTip] = useState("");
   function handleSubmit(e) {
     e.preventDefault();
     onAddTip(tip);
+    setTip("")
   }
   return (
     <div className="p-5 bg-light-grayish-cyan rounded-lg mt-5">
