@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { ServiceList } from "./ServiceList";
-import { TotalBill } from "./TotalBill";
 import { ResultPanel } from "./ResultPanel";
 import { FormAddService } from "./FormAddService";
 import { FormAddTip } from "./FormAddTip";
@@ -17,20 +16,23 @@ export const TipCalculator = () => {
 
   function handleAddService(service) {
     setServiceList([...serviceList, service]);
-
   }
   function handleAddTip(t) {
     setTip(t);
   }
 
   function handleSplit() {
-    setServiceList(serviceList.map(service => ({...service, tipAmount : (service.serviceCost * tipPercentage).toFixed(2)})));
-    console.log(serviceList);
+    setServiceList(
+      serviceList.map((service) => ({
+        ...service,
+        tipAmount: (service.serviceCost * tipPercentage).toFixed(2),
+      }))
+    );
   }
 
-  function handleReset(){
-setServiceList([])
-setTip("")
+  function handleReset() {
+    setServiceList([]);
+    setTip("");
   }
 
   return (
@@ -44,20 +46,18 @@ setTip("")
           <p>Your services will appear here.</p>
         )}
 
-        <FormAddService onAddService={handleAddService}/>
+        <FormAddService onAddService={handleAddService} />
         <FormAddTip onAddTip={handleAddTip} />
-        
       </div>
       <div>
-      <ResultPanel serviceList={serviceList} onSplit={handleSplit}/>
-      <button
+        <ResultPanel serviceList={serviceList} onSplit={handleSplit} />
+        <button
           className="bg-primary p-[9px] grid-cols-subgrid col-span-2"
           onClick={handleReset}
         >
           Reset
         </button>
       </div>
-      
     </div>
   );
 };
